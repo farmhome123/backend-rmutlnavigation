@@ -130,9 +130,11 @@ class ClassCreate extends Component {
             Submit
           </button>
           <a
+
             onClick={() => {
               this.props.history.goBack();
             }}
+            disabled={isSubmitting}
             type="Button"
             className="btn btn-default pull-right"
             style={{ marginRight: 10 }}

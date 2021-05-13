@@ -141,7 +141,7 @@ class Stock extends Component {
                         className="logo"
                       />
                     </span>
-                    <a href="?" className="content">
+                    <a href="/building" className="content">
                       <div className="info-box-content">
                         <p className="p_custom">ระบบจัดการอาคาร</p>
                       </div>

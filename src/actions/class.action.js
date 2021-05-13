@@ -45,7 +45,7 @@ export const getClassByBuildingId = (buildingid) => {
     // dispatch(finishInitialization(false))
     dispatch(setStateClassToFetching());
     httpClient
-      .get(`${server.CLASS_URL}/${buildingid}`)
+      .get(`${server.CLASS_URL}/building/${buildingid}`)
       .then((result) => {
         dispatch(setStateClassToSuccess(result.data));
       })

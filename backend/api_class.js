@@ -56,7 +56,7 @@ router.post("/classroom", async (req, res) => {
 });
 
 // Update classroom
-router.put("/classroom/:id", async (req, res) => {
+router.put("/classroom", async (req, res) => {
     try {
         var form = new formidable.IncomingForm();
         form.parse(req, async (err, fields, files) => {
@@ -89,7 +89,16 @@ router.delete("/classroom/:id", async (req, res) => {
 });
 
 // Get classroom by Id
-router.get("/classroom/:buildingid", async (req, res) => {
+router.get("/classroom/:id", async (req, res) => {
+    let result = await classroom.findOne({ where: { id: req.params.id } })
+    if (result) {
+        res.json(result);
+    } else {
+        res.json({});
+    }
+})
+
+router.get("/classroom/building/:buildingid", async (req, res) => {
     let result = await classroom.findAll({ where: { buildingid: req.params.buildingid } })
     if (result) {
         res.json(result);
