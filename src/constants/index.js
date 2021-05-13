@@ -94,8 +94,8 @@ export const NETWORK_TIMEOUT_MESSAGE =
 export const UPLOAD_PHOTO_FAIL_MESSAGE =
   "An error has occurred. The photo was unable to upload.";
 
-export const apiUrl = "http://rmurlreact-api/api/v2";
-export const imageUrl = "http://rmurlreact";
+export const apiUrl = "http://rmurlreact-api.ml/api/v2";
+export const imageUrl = "http://rmurlreact-api.ml";
 
 export const YES = "YES";
 export const NO = "NO";
