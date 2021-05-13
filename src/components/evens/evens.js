@@ -40,6 +40,7 @@ class Evens extends Component {
               </span>
               {item.name}
             </td>
+        
             <td>{item.buildingevens}</td>
             <td>{item.detailevens}</td>
             <td>
