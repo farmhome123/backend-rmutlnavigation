@@ -69,6 +69,38 @@ class ClassCreate extends Component {
         </div>
         <div className="form-group">
           <label className="col-sm-2 control-label" htmlFor="name">
+            เบอร์โทรติดต่อ
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="phone"
+              onChange={handleChange}
+              value={values.phone}
+              placeholder="เบอร์โทรติดต่อ(ถ้ามี)"
+              className="form-control"
+              type="text"
+              id="phone"
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <label className="col-sm-2 control-label" htmlFor="name">
+            วิธีการเดินทางไปยังห้อง
+          </label>
+          <div className="col-sm-10">
+            <textarea
+              onChange={handleChange}
+              name="gotoclass"
+              value={values.gotoclass}
+              placeholder="โปรดระบุรายละเอียดวิธีการเดินทางไปยังห้อง"
+              className="form-control"
+              type="text"
+              id="gotoclass"
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <label className="col-sm-2 control-label" htmlFor="name">
             buildingid
           </label>
           <div className="col-sm-10">
@@ -76,10 +108,10 @@ class ClassCreate extends Component {
               name="buildingid"
               onChange={handleChange}
               value={values.buildingid = this.props.match.params.id}
-
               className="form-control"
               type="text"
               id="buildingid"
+
             />
           </div>
         </div>
@@ -130,11 +162,9 @@ class ClassCreate extends Component {
             Submit
           </button>
           <a
-
             onClick={() => {
               this.props.history.goBack();
             }}
-            disabled={isSubmitting}
             type="Button"
             className="btn btn-default pull-right"
             style={{ marginRight: 10 }}
@@ -174,7 +204,9 @@ class ClassCreate extends Component {
                     "floot",
                     values.floot
                   );
-                  formData.append("buildingid", values.buildingid)
+                  formData.append("buildingid", values.buildingid);
+                  formData.append("phone", values.phone);
+                  formData.append("gotoclass", values.gotoclass);
                   formData.append("image", values.file);
                   await httpClient.post(server.CLASS_URL, formData);
                   setSubmitting(false);

@@ -19,6 +19,7 @@ class Class extends Component {
     this.debounceSearch = _.debounce(this.props.getClassByKeyword, 500);
     // this.props.getClass();
     let buildingid = this.props.match.params.id;
+    let buildingname = this.props.name;
     // alert(buildingid)
     this.props.getClassByBuildingId(buildingid);
   }
@@ -38,7 +39,13 @@ class Class extends Component {
                 <img
                   src={`${imageUrl}/images/${item.image
                     }?dummy=${Math.random()}`}
-                  style={{ maxWidth: 250 }}
+                    onError={(e) => {
+                      e.target.onError = null;
+                      e.target.src =
+                        "http://localhost:8085/images/defualclass.jpg";
+                    }}
+                  style={{ maxWidth: 250 }
+                }
                 />
               </span>
               {item.name}
@@ -49,10 +56,16 @@ class Class extends Component {
             <td>
               {item.floot}
             </td>
-            <td>
+            {/* <td>
               {item.buildingid}
+            </td> */}
+            <td>
+              {item.phone}
             </td>
-            <td>{item.id}</td>
+            <td>
+              {item.gotoclass}
+            </td>
+            {/* <td>{item.id}</td> */}
             <td style={{ textAlign: "center" }}>
               {/* <button
                 onClick={() =>
@@ -146,11 +159,11 @@ class Class extends Component {
                       />
                     </div>
                     <div className="col-xs-6">
-                      <div style={{ fontSize: 20 }}>ข้อมูลอาคาร ID :{this.props.match.params.id}</div>
+                      <div style={{ fontSize: 20 }}>ข้อมูลอาคาร</div>
+                      {/* ID :{this.props.match.params.id} */}
                     </div>
                     <div className="col-xs-6 text-right">
                       <Link
-
                         onClick={() =>
                           this.props.history.push(`/class-create/${this.props.match.params.id}`)
                         }
@@ -176,8 +189,10 @@ class Class extends Component {
                         <th style={{ width: "30%" }}>NameClass</th>
                         <th style={{ width: "9%" }}>Detailclass</th>
                         <th style={{ width: "9%" }}>Floot</th>
-                        <th style={{ width: "5%" }}>Buildingid</th>
-                        <th style={{ width: "5%" }}>IDclass</th>
+                        {/* <th style={{ width: "5%" }}>Buildingid</th> */}
+                        <th style={{ width: "5%" }}>Phone</th>
+                        <th style={{ width: "5%" }}>Gotoclass</th>
+                        {/* <th style={{ width: "5%" }}>IDclass</th> */}
                         <th style={{ width: "8%", textAlign: "center" }}>
                           Acttion
                         </th>

@@ -41,7 +41,7 @@ class News extends Component {
               {item.name}
             </td>
             <td>{item.detailnews}</td>
-            <td>{item.id}</td>
+            {/* <td>{item.id}</td> */}
             <td style={{ textAlign: "center" }}>
               <button
                 onClick={() => this.props.history.push(`/news-edit/${item.id}`)}
@@ -141,7 +141,7 @@ class News extends Component {
                         </th>
                         <th style={{ width: "50%" }}>NameNews</th>
                         <th style={{ width: "9%" }}>DetailNews</th>
-                        <th style={{ width: "9%" }}>ID</th>
+                        {/* <th style={{ width: "9%" }}>ID</th> */}
 
                         <th style={{ width: "14%", textAlign: "center" }}>
                           Acttion

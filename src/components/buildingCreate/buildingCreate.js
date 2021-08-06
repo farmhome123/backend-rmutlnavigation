@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { Formik } from "formik";
+import { ErrorMessage, Formik } from "formik";
 import "./buildingCreate.css";
 import { httpClient } from "./../../utils/HttpClient";
 import { server } from "./../../constants";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 class BuildingCreate extends Component {
   showForm = ({
     values,
@@ -66,6 +69,22 @@ class BuildingCreate extends Component {
             />
           </div>
         </div>
+        <div className="form-group">
+          <label className="col-sm-2 control-label" htmlFor="name">
+            ชื่อใกล้เคียง
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="tagname"
+              onChange={handleChange}
+              value={values.tagname}
+              placeholder="โปรดระบุชื่อชื่ออาคารใกล้เคียง"
+              className="form-control"
+              type="text"
+              id="tagname"
+            />
+          </div>
+        </div>
         <div className="form-group" style={{ marginTop: 15 }}>
           <div className="col-sm-12 col-sm-offset-2">
             {this.showPreviewImage(values)}
@@ -106,6 +125,12 @@ class BuildingCreate extends Component {
         </div>
         <div className="box-footer" style={{ marginTop: 50 }}>
           <button
+            onClick={(e) => {
+              if (values.file == undefined) {
+                alert("กรุณาเพิ่มรูปภาพอาคาร");
+                e.preventDefault();
+              }
+            }}
             type="submit"
             disabled={isSubmitting}
             className="btn btn-primary pull-right"
@@ -155,6 +180,7 @@ class BuildingCreate extends Component {
                     "buildinglongitude",
                     values.buildinglongitude
                   );
+                  formData.append("tagname", values.tagname);
                   formData.append("image", values.file);
                   await httpClient.post(server.BUILDING_URL, formData);
                   setSubmitting(false);

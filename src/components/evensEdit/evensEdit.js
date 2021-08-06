@@ -25,7 +25,7 @@ class EvensEdit extends Component {
       <form className="form-horizontal" onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="col-sm-2 control-label" htmlFor="name">
-            ชื่อหัวข่าว
+            ชื่อกิจกรรม
           </label>
           <div className="col-sm-10">
             <input
@@ -78,37 +78,20 @@ class EvensEdit extends Component {
         </div>
         <div className="form-group">
           <label className="col-sm-2 control-label" htmlFor="name">
-            Latitude
+            Linkสถานที่กิจกรรม
           </label>
           <div className="col-sm-10">
             <input
-              name="evenslatitude"
+              name="urlgooglemap"
               onChange={handleChange}
-              value={values.evenslatitude}
+              value={values.urlgooglemap}
               placeholder="โปรดระบุlatitude"
               className="form-control"
               type="text"
-              id="evenslatitude"
+              id="urlgooglemap"
             />
           </div>
         </div>
-        <div className="form-group">
-          <label className="col-sm-2 control-label" htmlFor="name">
-            Longitude
-          </label>
-          <div className="col-sm-10">
-            <input
-              name="evenslongitude"
-              onChange={handleChange}
-              value={values.evenslongitude}
-              placeholder="โปรดระบุlongitude"
-              className="form-control"
-              type="text"
-              id="evenslongitude"
-            />
-          </div>
-        </div>
-
         <div className="form-group" style={{ marginTop: 15 }}>
           <div className="col-sm-12 col-sm-offset-2">
             {this.showPreviewImage(values)}
@@ -192,7 +175,7 @@ class EvensEdit extends Component {
           <div className="box box-primary" style={{ marginTop: 70 }}>
             <div className="box-header with-border">
               <p className="box-title" style={{ fontSize: 30 }}>
-                แก้ไขข่าวสาร
+                แก้ไขกิจกรรม
               </p>
             </div>
             <div className="box-body" style={{ marginTop: 30 }}>
@@ -205,8 +188,7 @@ class EvensEdit extends Component {
                   formData.append("name", values.name);
                   formData.append("detailevens", values.detailevens);
                   formData.append("buildingevens", values.buildingevens);
-                  formData.append("evenslatitude", values.evenslatitude);
-                  formData.append("evenslongitude", values.evenslongitude);
+                  formData.append("urlgooglemap", values.urlgooglemap);
 
                   if (values.file) {
                     formData.append("image", values.file);

@@ -76,7 +76,22 @@ class BuildingEdit extends Component {
             />
           </div>
         </div>
-
+        <div className="form-group">
+          <label className="col-sm-2 control-label" htmlFor="name">
+            ชื่อใกล้เคียง
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="tagname"
+              onChange={handleChange}
+              value={values.tagname}
+              placeholder="โปรดระบุชื่อชื่ออาคารใกล้เคียง"
+              className="form-control"
+              type="text"
+              id="tagname"
+            />
+          </div>
+        </div>
         <div className="form-group" style={{ marginTop: 15 }}>
           <div className="col-sm-12 col-sm-offset-2">
             {this.showPreviewImage(values)}
@@ -176,6 +191,7 @@ class BuildingEdit extends Component {
                     "buildinglongitude",
                     values.buildinglongitude
                   );
+                  formData.append("tagname", values.tagname);
 
                   if (values.file) {
                     formData.append("image", values.file);

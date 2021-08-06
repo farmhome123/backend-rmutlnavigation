@@ -40,16 +40,10 @@ class Evens extends Component {
               </span>
               {item.name}
             </td>
-        
             <td>{item.buildingevens}</td>
             <td>{item.detailevens}</td>
-            <td>
-              <NumberFormat value={item.evenslatitude} displayType={"text"} />
-            </td>
-            <td>
-              <NumberFormat value={item.evenslongitude} displayType={"text"} />
-            </td>
-            <td>{item.id}</td>
+            <td>{item.urlgooglemap}</td>
+            {/* <td>{item.id}</td> */}
             <td style={{ textAlign: "center" }}>
               <button
                 onClick={() =>
@@ -149,12 +143,11 @@ class Evens extends Component {
                         <th style={{ width: "7%", textAlign: "center" }}>
                           Created
                         </th>
-                        <th style={{ width: "30%" }}>NameEvens</th>
-                        <th style={{ width: "15%" }}>BuildingEvens</th>
-                        <th style={{ width: "15%" }}>DetailEvens</th>
-                        <th style={{ width: "9%" }}>Latitude</th>
-                        <th style={{ width: "9%" }}>Longitude</th>
-                        <th style={{ width: "5%" }}>ID</th>
+                        <th style={{ width: "20%" }}>NameEvens</th>
+                        <th style={{ width: "20%" }}>BuildingEvens</th>
+                        <th style={{ width: "20%" }}>DetailEvens</th>
+                        <th style={{ width: "20" }}>urlgooglemap</th>
+                        {/* <th style={{ width: "5%" }}>ID</th> */}
                         <th style={{ width: "14%", textAlign: "center" }}>
                           Acttion
                         </th>

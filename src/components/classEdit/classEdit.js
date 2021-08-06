@@ -78,6 +78,38 @@ class ClassEdit extends Component {
         </div>
         <div className="form-group">
           <label className="col-sm-2 control-label" htmlFor="name">
+            เบอร์โทรติดต่อ
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="phone"
+              onChange={handleChange}
+              value={values.phone}
+              placeholder="เบอร์โทรติดต่อ(ถ้ามี)"
+              className="form-control"
+              type="text"
+              id="phone"
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <label className="col-sm-2 control-label" htmlFor="name">
+            วิธีการเดินทางไปยังห้อง
+          </label>
+          <div className="col-sm-10">
+            <textarea
+              onChange={handleChange}
+              name="gotoclass"
+              value={values.gotoclass}
+              placeholder="โปรดระบุรายละเอียดวิธีการเดินทางไปยังห้อง"
+              className="form-control"
+              type="text"
+              id="gotoclass"
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <label className="col-sm-2 control-label" htmlFor="name">
             buildingid
         </label>
           <div className="col-sm-10">
@@ -191,6 +223,8 @@ class ClassEdit extends Component {
                   formData.append("detailclass", values.detailclass);
                   formData.append("floot", values.floot);
                   formData.append("building", values.building);
+                  formData.append("phone", values.phone);
+                  formData.append("gotoclass", values.gotoclass);
 
                   if (values.file) {
                     formData.append("image", values.file);

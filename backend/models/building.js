@@ -8,10 +8,14 @@ const building = sequelize.define(
             type: Sequelize.STRING,
             allowNull: false
         },
+        tagname: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
         image: {
             type: Sequelize.STRING,
             allowNull: false,
-            defaultValue: "-"
+            defaultValue: "null"
         },
         buildinglatitude: {
             type: Sequelize.FLOAT,

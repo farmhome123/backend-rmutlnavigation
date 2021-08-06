@@ -32,13 +32,20 @@ class Building extends Component {
             <td>
               <span style={{ marginRight: 10, minHe: 100 }}>
                 <img
-                  src={`${imageUrl}/images/${item.image
-                    }?dummy=${Math.random()}`}
+                  src={`${imageUrl}/images/${
+                    item.image
+                  }?dummy=${Math.random()}`}
+                  onError={(e) => {
+                    e.target.onError = null;
+                    e.target.src =
+                      "http://localhost:8085/builldingdefault.png";
+                  }}
                   style={{ maxWidth: 250 }}
                 />
               </span>
               {item.name}
             </td>
+            <td>{item.tagname}</td>
             <td>
               <NumberFormat
                 value={item.buildinglatitude}
@@ -51,13 +58,11 @@ class Building extends Component {
                 displayType={"text"}
               />
             </td>
-            <td>{item.id}</td>
+            {/* <td>{item.id}</td> */}
             <td style={{ textAlign: "center" }}>
-            <span style={{ color: "grey" }}> | </span>
+              <span style={{ color: "grey" }}> | </span>
               <button
-                onClick={() =>
-                  this.props.history.push(`/class/${item.id}`)
-                }
+                onClick={() => this.props.history.push(`/class/${item.id}`)}
                 type="button"
                 className="btn btn-primary"
               >
@@ -94,14 +99,18 @@ class Building extends Component {
                 ลบ
               </button>
               <span style={{ color: "grey" }}> | </span>
-              <br/><br/>
+              <br />
+              <br />
               <span style={{ color: "grey" }}> | </span>
               <button
-                onClick={() =>
-                  {
-                    window.open("https://maps.google.com?q="+(item.buildinglatitude)+","+(item.buildinglongitude));
-                  }
-                }
+                onClick={() => {
+                  window.open(
+                    "https://maps.google.com?q=" +
+                      item.buildinglatitude +
+                      "," +
+                      item.buildinglongitude
+                  );
+                }}
                 type="button"
                 className="btn btn-success"
               >
@@ -122,7 +131,6 @@ class Building extends Component {
     this.debounceSearch(e);
   };
 
-
   render() {
     return (
       <div className="content-wrapper">
@@ -136,7 +144,7 @@ class Building extends Component {
               </a>
             </li>
             <li>
-              <a href="#/">Stock</a>
+              <a href="#/"></a>
             </li>
           </ol>
         </section>
@@ -178,10 +186,11 @@ class Building extends Component {
                         <th style={{ width: "7%", textAlign: "center" }}>
                           Created
                         </th>
-                        <th style={{ width: "30%" }}>NameBuilding</th>
+                        <th style={{ width: "20%" }}>NameBuilding</th>
+                        <th style={{ width: "9%" }}>Tagname</th>
                         <th style={{ width: "9%" }}>Latitude</th>
                         <th style={{ width: "9%" }}>Longitude</th>
-                        <th style={{ width: "5%" }}>ID</th>
+                        {/* <th style={{ width: "5%" }}>ID</th> */}
                         <th style={{ width: "16%", textAlign: "center" }}>
                           Acttion
                         </th>

@@ -68,40 +68,23 @@ class EvensCreate extends Component {
         </div>
         <div className="form-group">
           <label className="col-sm-2 control-label" htmlFor="name">
-            Latitude
+            Link พิกัดสถานที่จัดกิจกรรม
           </label>
           <div className="col-sm-10">
-            <input
-              name="evenslatitude"
+            <textarea
+              name="urlgooglemap"
               onChange={handleChange}
-              value={values.evenslatitude}
-              placeholder="โปรดระบุlatitude"
+              value={values.urlgooglemap}
+              placeholder="วางลิงค์จาก googlemap"
               className="form-control"
               type="text"
-              id="evenslatitude"
-            />
-          </div>
-        </div>
-        <div className="form-group">
-          <label className="col-sm-2 control-label" htmlFor="name">
-            Longitude
-          </label>
-          <div className="col-sm-10">
-            <input
-              name="evenslongitude"
-              onChange={handleChange}
-              value={values.evenslongitude}
-              placeholder="โปรดระบุlongitude"
-              className="form-control"
-              type="text"
-              id="evenslongitude"
+              id="urlgooglemap"
             />
           </div>
         </div>
         <div className="form-group" style={{ marginTop: 15 }}>
           <div className="col-sm-12 col-sm-offset-2">
             {this.showPreviewImage(values)}
-
             <div className="wrap-upload-buttons control-label">
               <ul className="btn-nav row" id="rcorners">
                 <li>
@@ -138,6 +121,12 @@ class EvensCreate extends Component {
         </div>
         <div className="box-footer" style={{ marginTop: 50 }}>
           <button
+            onClick={(e) => {
+              if (values.file == undefined) {
+                alert("กรุณาเพิ่มรูปกิจกรรม");
+                e.preventDefault();
+              }
+            }}
             type="submit"
             disabled={isSubmitting}
             className="btn btn-primary pull-right"
@@ -173,7 +162,7 @@ class EvensCreate extends Component {
           <div className="box box-primary" style={{ marginTop: 70 }}>
             <div className="box-header with-border">
               <p className="box-title" style={{ fontSize: 30 }}>
-                เพิ่มข่าวสาร
+                เพิ่มกิจกรรม
               </p>
             </div>
             <div className="box-body" style={{ marginTop: 30 }}>
@@ -184,8 +173,7 @@ class EvensCreate extends Component {
                   formData.append("name", values.name);
                   formData.append("buildingevens", values.buildingevens);
                   formData.append("detailevens", values.detailevens);
-                  formData.append("evenslatitude", values.evenslatitude);
-                  formData.append("evenslongitude", values.evenslongitude);
+                  formData.append("urlgooglemap", values.urlgooglemap);
                   formData.append("image", values.file);
                   await httpClient.post(server.EVENS_URL, formData);
                   setSubmitting(false);

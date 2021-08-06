@@ -6,6 +6,7 @@ const constants = require("./constant");
 const formidable = require("formidable");
 const path = require("path");
 const fs = require("fs-extra");
+const { Console } = require("console");
 const Op = Sequelize.Op;
 
 // Upload Image building
@@ -99,8 +100,25 @@ router.get("/building/:id", async (req, res) => {
 // Get building by Keyword
 router.get("/building/keyword/:keyword", async (req, res) => {
     const { keyword } = req.params;
-    let result = await building.findAll({ where: { name: { [Op.like]: `%${keyword}%` } } });
+    let result = await building.findAll({
+        where: {
+            [Op.or]: [
+                {
+                    name: {
+                        [Op.like]: `%${keyword}%`
+                    }
+                },
+                {
+                    tagname: {
+                        [Op.like]: `%${keyword}%`
+                    }
+                }
+            ]
+        }
+    });
+    console.log(result);
     res.json(result);
+
 });
 
 module.exports = router;

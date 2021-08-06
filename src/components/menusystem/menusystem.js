@@ -27,7 +27,7 @@ class Menusystem extends Component {
                 className="logo"
               />
             </span>
-            <a href="/news" className="content">
+            {/* <a href="/news" className="content">
               <div className="info-box-content">
                 <p className="p_custom">ระบบจัดการข่าวสาร</p>
               </div>
@@ -41,7 +41,7 @@ class Menusystem extends Component {
                 src={`${process.env.PUBLIC_URL}/images/puzzle.png`}
                 className="logo"
               />
-            </span>
+            </span> */}
             <a href="/evens" className="content">
               <div className="info-box-content">
                 <p className="p_custom">ระบบจัดการกิจกรรม</p>

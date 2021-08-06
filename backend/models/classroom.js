@@ -24,8 +24,17 @@ const classroom = sequelize.define(
         buildingid: {
             type: Sequelize.INTEGER,
             allowNull: false
-        }
+        },
+        phone: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
+        gotoclass: {
+            type: Sequelize.STRING,
+            allowNull: false
+        },
 
+       
     },
     {
         // options
