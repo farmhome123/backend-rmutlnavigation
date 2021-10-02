@@ -4,34 +4,31 @@ import {
   HTTP_LOGIN_FAILED,
   server,
   OK,
-  YES
+  YES,
 } from "../constants";
 import { httpClient } from "./../utils/HttpClient";
 
 export const setLoginStateToFetching = () => ({
-  type: HTTP_LOGIN_FETCHING
+  type: HTTP_LOGIN_FETCHING,
 });
 
-export const setLoginStateToSuccess = payload => ({
+export const setLoginStateToSuccess = (payload) => ({
   type: HTTP_LOGIN_SUCCESS,
-  payload
+  payload,
 });
 
 export const setLoginStateToFailed = () => ({
-  type: HTTP_LOGIN_FAILED
+  type: HTTP_LOGIN_FAILED,
 });
 
-
-
 export const autoLogin = (history) => {
-    return () => {    
-      if (localStorage.getItem(server.LOGIN_PASSED)  == YES){      
-        setTimeout(()=>history.push("/stock"), 100)         
-      }
-    } 
-  }
+  return () => {
+    if (localStorage.getItem(server.LOGIN_PASSED) == YES) {
+      setTimeout(() => history.push("/building"), 100);
+    }
+  };
+};
 
-  
 export const login = (history, credential) => {
   return async (dispatch, getState) => {
     dispatch(setLoginStateToFetching());
@@ -40,7 +37,7 @@ export const login = (history, credential) => {
       localStorage.setItem(server.LOGIN_PASSED, YES);
       getState().appReducer.app.forceUpdate();
 
-      history.push("/stock");
+      history.push("/building");
       dispatch(setLoginStateToSuccess(result));
     } else {
       dispatch(setLoginStateToFailed());

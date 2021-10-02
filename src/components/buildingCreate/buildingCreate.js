@@ -6,6 +6,7 @@ import { server } from "./../../constants";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
+
 class BuildingCreate extends Component {
   showForm = ({
     values,
@@ -127,7 +128,14 @@ class BuildingCreate extends Component {
           <button
             onClick={(e) => {
               if (values.file == undefined) {
-                alert("กรุณาเพิ่มรูปภาพอาคาร");
+                //alert("กรุณาเพิ่มรูปภาพอาคาร");
+                MySwal.fire({
+                  title: "กรุณาเพิ่มรูปภาพอาคาร",
+                  type: "warning",
+                  showCancelButton: false,
+                  confirmButtonText: "ตกลง",
+               
+                })
                 e.preventDefault();
               }
             }}

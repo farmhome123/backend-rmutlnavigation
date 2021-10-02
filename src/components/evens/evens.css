@@ -45,6 +45,13 @@ h2 {
     color: #989695
 }
 
+td{
+ max-width: 100px;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
+
 .table>tbody>tr>td,
 .table>tbody>tr>th,
 .table>tfoot>tr>td,

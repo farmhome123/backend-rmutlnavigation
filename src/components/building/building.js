@@ -38,7 +38,7 @@ class Building extends Component {
                   onError={(e) => {
                     e.target.onError = null;
                     e.target.src =
-                      "http://localhost:8085/builldingdefault.png";
+                      "https://api.rmutlfarm.tk/builldingdefault.png";
                   }}
                   style={{ maxWidth: 250 }}
                 />

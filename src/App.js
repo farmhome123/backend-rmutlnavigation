@@ -33,6 +33,7 @@ import {
   Route,
   Redirect,
   Switch,
+  HashRouter,
 } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -65,7 +66,7 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <Router >
         <div>
           {isLoggedIn() && <Header />}
           {/* {isLoggedIn() && <Menu />} */}

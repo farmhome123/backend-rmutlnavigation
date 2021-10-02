@@ -15,7 +15,7 @@ class Header extends Component {
           </span>
           {/* logo for regular state and mobile devices */}
           <span className="logo-lg">
-            <b>Admin</b>
+            <b>Back-End</b>
           </span>
         </a>
         {/* Header Navbar: style can be found in header.less */}

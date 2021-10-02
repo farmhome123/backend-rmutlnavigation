@@ -1,50 +1,61 @@
 import React, { Component } from "react";
 import { login, autoLogin } from "./../../actions/login.action";
 import { connect } from "react-redux";
+import { imageUrl } from "../../constants";
+import "./login.css"
 
 class Login extends Component {
-
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
-       username:"",
-       password:""
-    }
+      username: "",
+      password: "",
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.autoLogin(this.props.history);
   }
-  
 
-
-  showError = ()=>{
+  showError = () => {
     return (
       <div className="alert alert-danger alert-dismissible">
-      <button type="button" className="close" data-dismiss="alert" aria-hidden="true">×</button>
-      <h4><i className="icon fa fa-ban" /> Error!</h4> Incorrect username or password
-    </div>
-    )
-  }
+        <button
+          type="button"
+          className="close"
+          data-dismiss="alert"
+          aria-hidden="true"
+        >
+          ×
+        </button>
+        <h4>
+          <i className="icon fa fa-ban" /> Error!
+        </h4>{" "}
+        Incorrect username or password
+      </div>
+    );
+  };
 
   render() {
     return (
-      <div className="login-box">
+      <div className="login-box" >
+       
         <div className="login-logo">
-          <a href="../../index2.html">
-            <b>Rmutl</b>Project
-          </a>
+          <h1>BackEnd</h1>
+          <h3>Rmutl (Jediln) Navigation</h3>
         </div>
         {/* /.login-logo */}
-        <div 
-        style={{background: "whitesmoke", borderRadius: 10}}
-        className="login-box-body">
+       
+        <div
+          style={{ background: "",  borderRadius: 10 }}
+          className="login-box-body"
+        >
           <p className="login-box-msg">Sign in to start your session</p>
           <form>
             <div className="form-group has-feedback">
               <input
-                onChange={e=>this.setState({username:e.target.value})}
+                onChange={(e) => this.setState({ username: e.target.value })}
                 type="email"
                 className="form-control"
                 placeholder="Email"
@@ -53,7 +64,7 @@ class Login extends Component {
             </div>
             <div className="form-group has-feedback">
               <input
-                onChange={e=>this.setState({password:e.target.value})}
+                onChange={(e) => this.setState({ password: e.target.value })}
                 type="password"
                 className="form-control"
                 placeholder="Password"
@@ -61,17 +72,16 @@ class Login extends Component {
               <span className="glyphicon glyphicon-lock form-control-feedback" />
             </div>
 
-            {this.props.loginReducer.isError ? this.showError() : null }
+            {this.props.loginReducer.isError ? this.showError() : null}
 
-  
             {/* Login */}
             <div className="row">
               <div className="col-xs-12">
                 <button
-                 onClick={e=>{
-                   e.preventDefault();
-                   this.props.login(this.props.history,this.state)
-                 }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.props.login(this.props.history, this.state);
+                  }}
                   type="submit"
                   className="btn btn-primary btn-block btn-flat"
                 >
@@ -85,9 +95,9 @@ class Login extends Component {
             <div className="row">
               <div className="col-xs-12">
                 <button
-                onClick={()=>this.props.history.push("/register")}
+                  onClick={() => this.props.history.push("/register")}
                   type="submit"
-                  style={{marginTop: 8}}
+                  style={{ marginTop: 8 }}
                   className="btn btn-block btn-default"
                 >
                   Register
@@ -103,11 +113,11 @@ class Login extends Component {
   }
 }
 
-
-const mapStateToProps = ({loginReducer}) => ({ loginReducer })
+const mapStateToProps = ({ loginReducer }) => ({ loginReducer });
 
 const mapDispatchToProps = {
-  login, autoLogin
-}
+  login,
+  autoLogin,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

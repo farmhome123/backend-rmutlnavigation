@@ -3,8 +3,11 @@ import { Formik } from "formik";
 import "./classCreate.css";
 import { httpClient } from "./../../utils/HttpClient";
 import { server } from "./../../constants";
-class ClassCreate extends Component {
 
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
+class ClassCreate extends Component {
   showForm = ({
     values,
     handleChange,
@@ -107,11 +110,10 @@ class ClassCreate extends Component {
             <input
               name="buildingid"
               onChange={handleChange}
-              value={values.buildingid = this.props.match.params.id}
+              value={(values.buildingid = this.props.match.params.id)}
               className="form-control"
               type="text"
               id="buildingid"
-
             />
           </div>
         </div>
@@ -155,6 +157,19 @@ class ClassCreate extends Component {
         </div>
         <div className="box-footer" style={{ marginTop: 50 }}>
           <button
+            onClick={(e) => {
+              if (values.file == undefined) {
+                //alert("กรุณาเพิ่มรูปภาพห้อง");
+                MySwal.fire({
+                  title: "กรุณาเพิ่มรูปภาพห้อง",
+                  type: "warning",
+                  showCancelButton: false,
+                  confirmButtonText: "ตกลง",
+               
+                })
+                e.preventDefault();
+              }
+            }}
             type="submit"
             disabled={isSubmitting}
             className="btn btn-primary pull-right"
@@ -200,10 +215,7 @@ class ClassCreate extends Component {
                   let formData = new FormData();
                   formData.append("name", values.name);
                   formData.append("detailclass", values.detailclass);
-                  formData.append(
-                    "floot",
-                    values.floot
-                  );
+                  formData.append("floot", values.floot);
                   formData.append("buildingid", values.buildingid);
                   formData.append("phone", values.phone);
                   formData.append("gotoclass", values.gotoclass);

@@ -42,7 +42,7 @@ class Evens extends Component {
             </td>
             <td>{item.buildingevens}</td>
             <td>{item.detailevens}</td>
-            <td>{item.urlgooglemap}</td>
+            <td >{item.urlgooglemap}</td>
             {/* <td>{item.id}</td> */}
             <td style={{ textAlign: "center" }}>
               <button

@@ -94,8 +94,8 @@ export const NETWORK_TIMEOUT_MESSAGE =
 export const UPLOAD_PHOTO_FAIL_MESSAGE =
   "An error has occurred. The photo was unable to upload.";
 
-export const apiUrl = "http://api-rmutlfarm.tk:8085/api/v2";
-export const imageUrl = "http://api-rmutlfarm.tk:8085/";
+export const apiUrl = "https://api.rmutlfarm.tk/api/v2";
+export const imageUrl = "https://api.rmutlfarm.tk//";
 
 export const YES = "YES";
 export const NO = "NO";

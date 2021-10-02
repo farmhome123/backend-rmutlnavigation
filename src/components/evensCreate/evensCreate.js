@@ -3,6 +3,11 @@ import { Formik } from "formik";
 import "./evensCreate.css";
 import { httpClient } from "./../../utils/HttpClient";
 import { server } from "./../../constants";
+
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
+
 class EvensCreate extends Component {
   showForm = ({
     values,
@@ -123,7 +128,14 @@ class EvensCreate extends Component {
           <button
             onClick={(e) => {
               if (values.file == undefined) {
-                alert("กรุณาเพิ่มรูปกิจกรรม");
+                //alert("กรุณาเพิ่มรูปกิจกรรม");
+                MySwal.fire({
+                  title: "กรุณาเพิ่มรูปกิจกรรม",
+                  type: "warning",
+                  showCancelButton: false,
+                  confirmButtonText: "ตกลง",
+               
+                })
                 e.preventDefault();
               }
             }}
